@@ -1,0 +1,42 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+After initialization, but before game start.
+  File "game/screens.rpy", line 348, in prepare_screen
+    screen main_menu():
+  File "game/screens.rpy", line 348, in prepare
+    screen main_menu():
+  File "game/screens.rpy", line 358, in prepare
+    add Transform("images/logo.png", xalign=0.5, yalign=0.2, at_list=[bounce_logo])
+  File "game/screens.rpy", line 358, in <module>
+    add Transform("images/logo.png", xalign=0.5, yalign=0.2, at_list=[bounce_logo])
+Exception: Unknown transform property: 'at_list'
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "C:\Users\giova\OneDrive\Desktop\RENPY GAME ENGINE\renpy\bootstrap.py", line 359, in bootstrap
+    renpy.main.main()
+  File "C:\Users\giova\OneDrive\Desktop\RENPY GAME ENGINE\renpy\main.py", line 652, in main
+    run(restart)
+  File "C:\Users\giova\OneDrive\Desktop\RENPY GAME ENGINE\renpy\main.py", line 94, in run
+    renpy.display.screen.prepare_screens()
+  File "C:\Users\giova\OneDrive\Desktop\RENPY GAME ENGINE\renpy\display\screen.py", line 1027, in prepare_screens
+    s.ast.prepare_screen()
+  File "game/screens.rpy", line 348, in prepare_screen
+    screen main_menu():
+  File "game/screens.rpy", line 348, in prepare
+    screen main_menu():
+  File "game/screens.rpy", line 358, in prepare
+    add Transform("images/logo.png", xalign=0.5, yalign=0.2, at_list=[bounce_logo])
+  File "C:\Users\giova\OneDrive\Desktop\RENPY GAME ENGINE\renpy\python.py", line 1211, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/screens.rpy", line 358, in <module>
+    add Transform("images/logo.png", xalign=0.5, yalign=0.2, at_list=[bounce_logo])
+  File "C:\Users\giova\OneDrive\Desktop\RENPY GAME ENGINE\renpy\display\transform.py", line 745, in __init__
+    raise Exception("Unknown transform property: %r" % k)
+Exception: Unknown transform property: 'at_list'
+
+Windows-10-10.0.22631 AMD64
+Ren'Py 8.3.7.25031702
+Test Project 1.0
+Thu Apr 17 20:42:10 2025
