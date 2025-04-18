@@ -355,17 +355,17 @@ screen main_menu():
         ysize 1080
 
     
-    add Transform("images/logo.png", xalign=0.5, yalign=0.2) at bounce_logo
+   # add Transform("images/logo.png", xalign=0.5, yalign=0.2) at bounce_logo
 
 
     # ⏱ Time label
     timer 1.0 repeat True action Function(renpy.restart_interaction)
 
     text "[get_time()]":
-        xpos 230
-        ypos 260
+        xpos 355
+        ypos 290
         color "#b8afaf"
-        size 25
+        size 10
         font "joystix_monospace.ttf"
         xanchor 0.0
         yanchor 0.0
@@ -373,16 +373,17 @@ screen main_menu():
 
     # 📱 Menu buttons in phone UI
     vbox at slant_right:
-        spacing 20
+        spacing 10
         xpos 110
-        ypos 400
+        ypos 320
         xanchor 0.0
         yanchor 0.0
 
-        textbutton "Start" action Start() style "main_menu_button"
-        textbutton "Options" action Show("overlay_preferences") style "main_menu_button"
-        textbutton "About" action Show("overlay_about") style "main_menu_button"
-        textbutton "Quit" action Quit(confirm=True) style "main_menu_button"
+        textbutton "New Game" action Start() style "main_menu_button" xalign 0.0
+        textbutton "Continue" action ShowMenu("load") style "main_menu_button" xalign 0.0
+        textbutton "Options" action Show("overlay_preferences") style "main_menu_button" xalign 0.0
+        textbutton "About" action Show("overlay_about") style "main_menu_button" xalign 0.0
+        textbutton "Quit" action Quit(confirm=True) style "main_menu_button" xalign 0.0
 
 
 
@@ -437,6 +438,13 @@ style main_menu_vbox is vbox
 style main_menu_text is gui_text
 style main_menu_title is main_menu_text
 style main_menu_version is main_menu_text
+style main_menu_button_text is button_text:
+    font "texting2007.ttf"
+    size 35
+style main_menu_button is button:
+    hover_sound "audio/MainMenuRollover.mp3"
+    activate_sound "audio/MainMenuPress.mp3"
+
 
 style main_menu_frame:
     xsize 420
