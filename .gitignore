@@ -1,9 +1,3 @@
 *.rpyc 
-*.rpa 
-*.log 
-*.save 
-*.bak 
-*.tmp 
-*.pyc 
-saves/ 
-persistent 
+cache/ 
+build/ 
