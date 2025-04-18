@@ -27,3 +27,36 @@ label start:
     show kase
     j "Still, it's kind of exciting to sneak out like this."
 
+    menu:
+        "Go Home.":
+            jump go_home
+
+        "Go for a walk.":
+            jump go_walk
+
+# === Branch: Go Home ===
+label go_home:
+
+    
+
+    show kase 
+    j "I better not take any chances."
+    scene bg bathroom
+    show kase
+    j "Back to my room it is."
+
+    
+
+    stop music fadeout 1.0
+    return
+
+# === Branch: Go for a Walk ===
+label go_walk:
+
+    show kase 
+    j "A short walk won’t hurt."
+
+    show kase 
+    j "Although... I should stay alert just in case."
+
+    return

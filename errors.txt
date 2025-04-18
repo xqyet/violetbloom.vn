@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 382: 'color' is not a keyword argument or valid child of the textbutton statement.
-    textbutton "Start" action Start() style "main_menu_button" color "#FFFF00"  xalign 0.5 
-                                                                    ^
+File "game/screens.rpy", line 369: 'show' is not a keyword argument or valid child of the screen statement.
+    show screen sparkle_overlay
+        ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Fri Apr 18 13:09:01 2025
+Fri Apr 18 14:18:31 2025

@@ -15,6 +15,19 @@ init python:
 init python:
     style.default.font = "joystix_monospace.ttf"
 
+init python:
+    import datetime
+    import random
+
+    def get_time():
+        return datetime.datetime.now().strftime("%I:%M %p")
+
+    def random_xy():
+        return random.randint(600, 1800), random.randint(0, 180)
+
+# This line goes OUTSIDE of init python
+image sparkle_white = Solid("#ffffff", xsize=2, ysize=2)
+
 ################################################################################
 ## Styles
 ################################################################################
@@ -353,6 +366,8 @@ screen main_menu():
         yalign 0.5
         xsize 1920
         ysize 1080
+    use sparkle_overlay
+        
 
     
    # add Transform("images/logo.png", xalign=0.5, yalign=0.2) at bounce_logo
@@ -1364,6 +1379,22 @@ style notify_text:
 ## This screen is used for NVL-mode dialogue and menus.
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#nvl
+
+screen sparkle_overlay():
+    for i in range(18):  # Number of sparkles
+        $ x, y = random_xy()
+        $ delay = random.uniform(0.0, 2.0)
+        add "sparkle_white" at sparkle_twinkle(delay) xpos x ypos y
+
+transform sparkle_twinkle(delay=0.0):
+    alpha 0.0
+    pause delay
+    block:
+        linear 0.3 alpha 1.0
+        linear 0.3 alpha 0.0
+        pause 1.4
+        repeat
+
 
 
 screen nvl(dialogue, items=None):
