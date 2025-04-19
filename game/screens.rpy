@@ -386,6 +386,8 @@ screen main_menu():
     
     add "images/KASE_logo.png" at bounce_logo
 
+  
+
 
 
 

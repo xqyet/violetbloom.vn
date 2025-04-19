@@ -1,8 +1,10 @@
-﻿define j = Character("Kase", color="#7af5b8")
+﻿define k = Character("Kase", color="#7af5b8")
+define h = Character("Hannah", color="#7af5b8")
 
 image bg darkalley = "darkalley.png"
 image bg bathroom = "bathroom.jpg"
-image jecka = "kase.png"
+image kase = "kase.png"
+image hannah = "hannah.png"
 
 
 
@@ -13,19 +15,22 @@ label start:
     play music "audio/ambience/Exterior_Ambience.mp3"
 
     show kase
-    j "It's too quiet here tonight..."
+    k "It's too quiet here tonight..."
+    
+    show hannah
+    h "testing!"
 
     show kase 
-    j "Something feels off."
+    k "Something feels off."
 
     show kase
-    j "Wait—did I hear footsteps?"
+    k "Wait—did I hear footsteps?"
 
     show kase 
-    j "Ugh. Maybe I'm just being paranoid."
+    k "Ugh. Maybe I'm just being paranoid."
 
     show kase
-    j "Still, it's kind of exciting to sneak out like this."
+    k "Still, it's kind of exciting to sneak out like this."
 
     menu:
         "Go Home.":
@@ -40,10 +45,11 @@ label go_home:
     
 
     show kase 
-    j "I better not take any chances."
+    k "I better not take any chances."
     scene bg bathroom
     show kase
-    j "Back to my room it is."
+    k "Back to my room it is."
+
 
     
 
@@ -54,9 +60,9 @@ label go_home:
 label go_walk:
 
     show kase 
-    j "A short walk won’t hurt."
+    k "A short walk won’t hurt."
 
     show kase 
-    j "Although... I should stay alert just in case."
+    k "Although... I should stay alert just in case."
 
     return

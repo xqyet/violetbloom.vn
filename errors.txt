@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 354: ATL statement contains two expressions in a row; is one of them a misspelled property? If not, separate them with pass.
-    timer 0.5 action Function(renpy.restart_interaction)
-              ^
+File "game/screens.rpy", line 387: 'show' is not a keyword argument or valid child of the screen statement.
+    show expression Image("images/KASE_logo.png") at bounce_logo
+        ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Fri Apr 18 20:00:00 2025
+Fri Apr 18 22:57:05 2025
