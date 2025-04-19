@@ -25,6 +25,9 @@ init python:
     def random_xy():
         return random.randint(600, 1800), random.randint(0, 180)
 
+default show_main_logo = True
+
+
 # This line goes OUTSIDE of init python
 image sparkle_white = Solid("#ffffff", xsize=2, ysize=2)
 
@@ -381,10 +384,13 @@ screen main_menu():
         xsize 1920
         ysize 1080
     use sparkle_overlay
+    if show_main_logo:
+        add "images/KASE_logo.png" at bounce_logo
         
 
     
-    add "images/KASE_logo.png" at bounce_logo
+   
+    
 
   
 
@@ -413,54 +419,93 @@ screen main_menu():
         yanchor 0.0
 
         textbutton "New Game" action Start() style "main_menu_button" xalign 0.0
-        textbutton "Continue" action ShowMenu("load") style "main_menu_button" xalign 0.0
-        textbutton "Options" action Show("overlay_preferences") style "main_menu_button" xalign 0.0
-        textbutton "About" action Show("overlay_about") style "main_menu_button" xalign 0.0
+        textbutton "Continue" action [Hide("overlay_preferences"), Hide("overlay_about"), Show("overlay_load")] style "main_menu_button" xalign 0.0
+        textbutton "Options" action [Hide("overlay_load"), Hide("overlay_about"), Show("overlay_preferences")] style "main_menu_button" xalign 0.0
+        textbutton "About" action [Hide("overlay_load"), Hide("overlay_preferences"), Show("overlay_about")] style "main_menu_button" xalign 0.0
         textbutton "Quit" action Quit(confirm=True) style "main_menu_button" xalign 0.0
 
 
+screen overlay_load():
+    zorder 200
+
+    on "show" action SetVariable("show_main_logo", False)
+    on "hide" action SetVariable("show_main_logo", True)
+
+    default page_name_value = FilePageNameInputValue(pattern=_("Page {}"))
+
+    frame:
+        background Solid((0, 0, 0, 0))
+        padding (30, 30, 30, 30)
+        xalign 0.9
+        yalign 0.3
+
+        has vbox
+        spacing 20
+
+        text "Load Game" size 45 font "handwriting.ttf" color "#ffffff"
+
+        grid 3 2 spacing 10:
+            for i in range(1, 7):
+                button:
+                    action FileLoad(i)
+                    xsize 250
+                    ysize 120
+                    has vbox
+
+                    text FileTime(i, empty="Empty Slot"):
+                        size 25
+                        font "texting2007.ttf"
+                    add FileScreenshot(i) xsize 180 ysize 102
+
+        # Page controls
+        hbox:
+            spacing 5
+            xalign 0.4
+            yalign 0.9
+
+            textbutton "<--" action FilePagePrevious() 
+            text "Page [FilePageName()]" font "texting2007.ttf" color "#bbbbbb" size 32
+            textbutton "-->" action FilePageNext()
+
 
 screen overlay_about():
-    modal True
+    on "show" action SetVariable("show_main_logo", False)
+    on "hide" action SetVariable("show_main_logo", True)
     zorder 200
 
     frame:
         background Solid((0, 0, 0, 0))
         padding (30, 30, 30, 30)
-        xpos 1100  # Move right
-        ypos 200   # Move up
+        xpos 1100
+        ypos 200
 
         has vbox
         spacing 15
 
-        text "About" size 35 font "texting2007.ttf" color "#ffffff"
-        text "Everything in this game is purely\nfictional. All characters are over\nthe age of 18." font "texting2007.ttf" color "#fc0000"
+        text "About" size 45 font "handwriting.ttf" color "#ffffff"
+        text "Everything in this game is purely\nfictional." font "texting2007.ttf" color "#a3a3a3"
 
-
-        textbutton "Close" action Hide("overlay_about")
 
 
 screen overlay_preferences():
-    modal True
     zorder 200
 
     frame:
         background Solid((0, 0, 0, 0))
         padding (30, 30, 30, 30)
-        xpos 1200
+        xpos 1100
         ypos 200
 
         has vbox
         spacing 20
 
-        text "Preferences" size 35 font "texting2007.ttf" color "#fff8f8"
+        text "Preferences" size 45 font "handwriting.ttf" color "#fff8f8"
 
         vbox:
             style_prefix "radio"
             textbutton "Fullscreen" action Preference("display", "fullscreen")
-            textbutton "Windowed" action Preference("display", "window") 
+            textbutton "Windowed" action Preference("display", "window")
 
-        textbutton "Close" action Hide("overlay_preferences")
 
 
 
@@ -1250,7 +1295,7 @@ screen confirm(message, yes_action, no_action):
 
     style_prefix "confirm"
 
-    add "gui/overlay/confirm.png"
+    # add "gui/overlay/confirm.png"
 
     frame:
 

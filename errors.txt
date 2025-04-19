@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 387: 'show' is not a keyword argument or valid child of the screen statement.
-    show expression Image("images/KASE_logo.png") at bounce_logo
-        ^
+File "game/screens.rpy", line 462: 'background' is not a keyword argument or valid child of the vbox statement.
+    background Solid("#00000020")  
+              ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Fri Apr 18 22:57:05 2025
+Sat Apr 19 14:07:01 2025
