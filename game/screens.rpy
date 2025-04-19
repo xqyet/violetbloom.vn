@@ -343,15 +343,24 @@ style navigation_button_text:
 ## https://www.renpy.org/doc/html/screen_special.html#main-menu
 
 transform bounce_logo:
-    on show:
-        alpha 0
-        linear 0.5 alpha 1.0
     anchor (0.5, 0.5)
-    zoom 1.0
+    xpos 1300
+    ypos 600
+    zoom 0.7
+    rotate 10
+    alpha 0.0
+
+    on show:
+        linear 0.5 alpha 1.0
+
+    pause 0.5
+
     block:
-        easein 0.6 zoom 1.3
-        easeout 0.6 zoom 1.0
+        easein 0.3 ypos 590
+        easeout 0.3 ypos 600
+        pause 0.1
         repeat
+
 
 transform slant_right:
     rotate 7
@@ -360,6 +369,11 @@ transform slant_right:
 
 screen main_menu():
     tag menu
+
+     # Play main theme music if not already playing
+    if not renpy.music.get_playing():
+        $ renpy.music.set_volume(0.3, delay=0, channel='music')
+        $ renpy.music.play("audio/main_theme.mp3", loop=True)
 
     add "images/menu.jpg":
         xalign 0.5
@@ -370,7 +384,9 @@ screen main_menu():
         
 
     
-   # add Transform("images/logo.png", xalign=0.5, yalign=0.2) at bounce_logo
+    add "images/KASE_logo.png" at bounce_logo
+
+
 
 
     # ⏱ Time label

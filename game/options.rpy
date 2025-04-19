@@ -155,6 +155,8 @@ define config.save_directory = "TestProject-1744911036"
 
 # define config.window_icon = "gui/window_icon.png"
 
+define config.window_icon = "kase_icon.ico"
+
 
 
 ## Build configuration #########################################################
